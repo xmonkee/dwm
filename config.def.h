@@ -88,9 +88,6 @@ static const char *pcmanfm[]        = {"pcmanfm", NULL };
 static const char *lock[]           = {"i3lock", "-d", "-e", "-c", "000000", NULL};
 static const char *shutter[]        = {"shutter", "-s", NULL };
 static const char *pavucontrol[]    = {"pavucontrol", NULL };
-//static const char *audiofix[]       = {"alsactl", "init", NULL };
-//static const char *monitorfix[]     = {"autorandr", "-c", NULL };
-//static const char *kbdfix[]         = {"setxkbmap", "-option", "ctrl:swapcaps", NULL };
 static const char *fixthings[]      = {"/home/mandava/.config/scripts/fixthings", NULL };
 static const char *volumeup[]       = {"pactl", "set-sink-volume", "@DEFAULT_SINK@", "+5%", NULL};
 static const char *volumedown[]     = {"pactl", "set-sink-volume", "@DEFAULT_SINK@", "-5%", NULL};
@@ -145,6 +142,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
 	{ MODKEY,                       XK_n,      nametag,        {0} },
+	{ MODKEY,                       XK_s,      swapfocus,      {0} },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
