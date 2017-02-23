@@ -31,6 +31,9 @@ static const char *colors[][3]      = {
 	[SchemeSel] =  { col_gray4, col_cyan,  col_red  },
 };
 
+/*Attaching*/
+#define ATTACH_SIDE 0
+
 /* tagging */
 #define MAX_TAGNAME_LEN 14		/* excludes TAG_PREPEND */
 #define TAG_PREPEND "%1i:"		/* formatted as 2 chars */

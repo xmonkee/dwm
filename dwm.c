@@ -478,13 +478,17 @@ attach(Client *c)
 
 void
 attachaside(Client *c) {
-	Client *at = nexttagged(c);
-	if(!at) {
-		attach(c);
-		return;
- 	}
-	c->next = at->next;
-	at->next = c;
+    if (ATTACH_SIDE) {
+        Client *at = nexttagged(c);
+        if(!at) {
+            attach(c);
+            return;
+        }
+        c->next = at->next;
+        at->next = c;
+    } else {
+        attach(c);
+    }
 }
 
 void
