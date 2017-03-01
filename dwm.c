@@ -209,6 +209,7 @@ static void focus(Client *c);
 static void focusin(XEvent *e);
 static void focusmon(const Arg *arg);
 static void focusstack(const Arg *arg);
+static void focusmaster(const Arg *arg);
 static Atom getatomprop(Client *c, Atom prop);
 static void focuswin(const Arg* arg);
 static int getrootptr(int *x, int *y);
@@ -2856,6 +2857,11 @@ deck(Monitor *m) {
         }
         else
             resize(c, m->wx + mw, m->wy, m->ww - mw - (2*c->bw), m->wh - (2*c->bw), False);
+}
+
+static void
+focusmaster(const Arg *arg) {
+    focus(nexttiled(selmon->clients));
 }
 
 int

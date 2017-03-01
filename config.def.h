@@ -23,7 +23,7 @@ static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#bbbbbb";
 static const char col_gray4[]       = "#eeeeee";
-static const char col_cyan[]        = "#005577";
+static const char col_cyan[]        = "#8EC07C";
 static const char col_red[]        = "#ff0000";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
@@ -55,7 +55,8 @@ static const Rule rules[] = {
 	{ "Shutter"         , NULL , NULL          , 0      , 1 , -1 } ,
 	{ "Spotify"         , NULL , NULL          , 1 << 8 , 0 , -1 } ,
 	{ "Firefox"         , NULL , NULL          , 1 << 4 , 0 , -1 } ,
-	{ NULL              , NULL , "Preferences" , 0      , 1 , -1 } ,
+	{ "jetbrains-idea"  , NULL , NULL          , 0      , 0 , -1 } ,
+    { NULL              , NULL , "Preferences" , 0      , 1 , -1 } ,
 };
 
 /* layout(s) */
@@ -146,6 +147,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
 	{ MODKEY,                       XK_n,      nametag,        {0} },
 	{ MODKEY,                       XK_s,      swapfocus,      {0} },
+	{ MODKEY|ControlMask,           XK_Return, focusmaster,    {0} },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
