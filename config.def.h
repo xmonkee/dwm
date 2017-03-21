@@ -48,14 +48,10 @@ static const Rule rules[] = {
 	/* class      instance    title       tags mask     isfloating   monitor */
 	{ "feh"             , NULL , NULL          , 0      , 1 , -1 } ,
 	{ "Enpass"          , NULL , NULL          , 0      , 1 , -1 } ,
-	{ "Pcmanfm"         , NULL , NULL          , 0      , 1 , -1 } ,
 	{ "Blueman-manager" , NULL , NULL          , 0      , 1 , -1 } ,
-	{ "zoom"            , NULL , NULL          , 0      , 1 , -1 } ,
 	{ "Pavucontrol"     , NULL , NULL          , 0      , 1 , -1 } ,
 	{ "Shutter"         , NULL , NULL          , 0      , 1 , -1 } ,
 	{ "Spotify"         , NULL , NULL          , 1 << 8 , 0 , -1 } ,
-	{ "Firefox"         , NULL , NULL          , 1 << 4 , 0 , -1 } ,
-	{ "jetbrains-idea"  , NULL , NULL          , 0      , 0 , -1 } ,
     { NULL              , NULL , "Preferences" , 0      , 1 , -1 } ,
 };
 
@@ -88,38 +84,12 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "xfce4-terminal", NULL };
 
-static const char *pcmanfm[]        = {"pcmanfm", NULL };
-static const char *lock[]           = {"i3lock", "-d", "-e", "-c", "000000", NULL};
-static const char *shutter[]        = {"shutter", "-s", NULL };
-static const char *pavucontrol[]    = {"pavucontrol", NULL };
-static const char *fixthings[]      = {"/home/mandava/.config/scripts/fixthings", NULL };
-static const char *volumeup[]       = {"pactl", "set-sink-volume", "@DEFAULT_SINK@", "+5%", NULL};
-static const char *volumedown[]     = {"pactl", "set-sink-volume", "@DEFAULT_SINK@", "-5%", NULL};
-static const char *volumemute[]     = {"pactl", "set-sink-mute", "@DEFAULT_SINK@", "toggle", NULL};
-static const char *brightnessup[]   = {"xbacklight", "-inc", "5", NULL};
-static const char *brightnessdown[] = {"xbacklight", "-dec", "5", NULL};
-static const char *play[]           = {"dbus-send", "--print-reply", "--dest=org.mpris.MediaPlayer2.spotify", "/org/mpris/MediaPlayer2", "org.mpris.MediaPlayer2.Player.PlayPause", NULL};
-
 
 #include "movestack.c"
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
-
-	{ MODKEY|ShiftMask   , XK_o       , spawn          , {.v = lock } }           ,
-	{ MODKEY|ShiftMask   , XK_f       , spawn          , {.v = pcmanfm } }        ,
-	{ MODKEY|ShiftMask   , XK_t       , spawn          , {.v = shutter } }        ,
-	{ MODKEY|ShiftMask   , XK_p       , spawn          , {.v = pavucontrol } }    ,
-	{ MODKEY|ShiftMask   , XK_r       , spawn          , {.v = fixthings } }    ,
-
-    { 0             , 0x1008ff13 , spawn          , {.v = volumeup } }       ,
-    { 0             , 0x1008ff11 , spawn          , {.v = volumedown } }     ,
-    { 0             , 0x1008ff12 , spawn          , {.v = volumemute } }     ,
-    { 0             , 0x1008ff14 , spawn          , {.v = play } } ,
-    { 0             , 0x1008ff02 , spawn          , {.v = brightnessup } }   ,
-    { 0             , 0x1008ff03 , spawn          , {.v = brightnessdown } } ,
-
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_w,      tabmode,        {-1} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
