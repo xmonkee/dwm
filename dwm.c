@@ -1800,7 +1800,7 @@ runAutostart(void) {
 	if (-1 == system("cd ~/.config/scripts; ./autostart.sh &")) {
         fprintf(stderr, "dwm: unable to autostart applications.\n");
     };
-	if (-1 == system("cd ~/.config/scripts; ./statusbar &")) {
+	if (-1 == system("cd ~/.config/scripts; ./i3dwmstatus.sh &")) {
         fprintf(stderr, "dwm: unable to start statusbar.\n");
     };
 }
