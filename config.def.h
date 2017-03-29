@@ -12,15 +12,19 @@ static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "Ubuntu Mono:size=12" , "FontAwesome:size=10"};
 static const char dmenufont[]       = "Ubuntu Mono:size=12";
 static const char col_gray1[]       = "#222222";
-static const char col_gray2[]       = "#444444";
+static const char col_gray2[]       = "#333333";
 static const char col_gray3[]       = "#bbbbbb";
-static const char col_gray4[]       = "#eeeeee";
+static const char col_gray4[]       = "#282828";
+static const char col_gray5[]       = "#eeeeee";
 static const char col_cyan[]        = "#005577";
+static const char col_blue[]        = "#286f9a";
+static const char col_green[]      = "#3E7459";
 static const char col_red[]        = "#ff0000";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
-	[SchemeSel] =  { col_gray4, col_cyan,  col_red  },
+	[SchemeAlt] =  { col_gray3, col_gray2, col_gray2 },
+	[SchemeSel] =  { col_gray5, col_cyan,  col_red  },
 };
 
 /*Attaching*/
@@ -28,7 +32,7 @@ static const char *colors[][3]      = {
 
 /* tagging */
 #define MAX_TAGNAME_LEN 14		/* excludes TAG_PREPEND */
-#define TAG_PREPEND "%1i:"		/* formatted as 2 chars */
+#define TAG_PREPEND "%1i"		/* formatted as 2 chars */
 #define MAX_TAGLEN 16			/* altogether */
 static char tags[][MAX_TAGLEN] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
 
@@ -42,8 +46,6 @@ static const Rule rules[] = {
 	{ "Enpass"          , NULL , NULL          , 0      , 1 , -1 } ,
 	{ "Blueman-manager" , NULL , NULL          , 0      , 1 , -1 } ,
 	{ "Pavucontrol"     , NULL , NULL          , 0      , 1 , -1 } ,
-	{ "Shutter"         , NULL , NULL          , 0      , 1 , -1 } ,
-	{ "Spotify"         , NULL , NULL          , 1 << 8 , 0 , -1 } ,
     { NULL              , NULL , "Preferences" , 0      , 1 , -1 } ,
 };
 
@@ -54,10 +56,11 @@ static const int resizehints = 0;    /* 1 means respect size hints in tiled resi
 
 static const Layout layouts[] = {
 	/* symbol     arrange function */
-	{ "[]=",      tile },    /* first entry is default */
-	{ "><>",      NULL },    /* no layout function means floating behavior */
+    /* first entry is default */
 	{ "[M]",      monocle },
+	{ "[]=",      tile },    
 	{ "[_]",      deck },
+	{ "><>",      NULL },    /* no layout function means floating behavior */
 };
 
 /* key definitions */
@@ -94,10 +97,10 @@ static Key keys[] = {
 	{ MODKEY,                       XK_Return, zoom,           {0} },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
 	{ MODKEY|ShiftMask,             XK_q,      killclient,     {0} },
-	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
-	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
-	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
-	{ MODKEY,                       XK_d,      setlayout,      {.v = &layouts[3]} },
+	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[0]} },
+	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[1]} },
+	{ MODKEY,                       XK_d,      setlayout,      {.v = &layouts[2]} },
+	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[3]} },
 	{ MODKEY,                       XK_space,  setlayout,      {0} },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
