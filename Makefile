@@ -45,6 +45,8 @@ install: all
 	@echo installing executable file to ${DESTDIR}${PREFIX}/bin
 	@mkdir -p ${DESTDIR}${PREFIX}/bin
 	@cp -f dwm ${DESTDIR}${PREFIX}/bin
+	@echo installing dwm-statusbar.sh to ${DESTDIR}${PREFIX}/bin
+	@cp -f dwm-statusbar.sh ${DESTDIR}${PREFIX}/bin
 	@chmod 755 ${DESTDIR}${PREFIX}/bin/dwm
 	@echo installing manual page to ${DESTDIR}${MANPREFIX}/man1
 	@mkdir -p ${DESTDIR}${MANPREFIX}/man1
@@ -54,6 +56,7 @@ install: all
 uninstall:
 	@echo removing executable file from ${DESTDIR}${PREFIX}/bin
 	@rm -f ${DESTDIR}${PREFIX}/bin/dwm
+	@rm -f ${DESTDIR}${PREFIX}/bin/dwm-statusbar.sh
 	@echo removing manual page from ${DESTDIR}${MANPREFIX}/man1
 	@rm -f ${DESTDIR}${MANPREFIX}/man1/dwm.1
 
